@@ -1,18 +1,18 @@
 const generarHTML = document.getElementById("generarHTML");
-let imagenes = 0;
+let imagenes = 1;
 let imgForm = "";
 let imgHTML = "";
 $("#imgBtn").click(function (e) {
     e.preventDefault();
     imgForm = "";
     imagenes++;
-    for (let i = 0; i < imagenes; i++) {
+    for (let i = 1; i < imagenes; i++) {
         imgForm += `
     <div class="input-group mt-2">
         <div class="input-group-prepend">
             <span class="input-group-text">Imagen ${[i+1]}:</span>
         </div>
-        <input type="text" id="imagenes${[i+1]}" class="form-control">
+        <input type="text" id="imagenes${[i]}" class="form-control">
         <div class="input-group-append">
             <input type="button" value="Eliminar" class="btn btn-danger borrar" id="btnDelete">
         </div>
@@ -27,13 +27,13 @@ $(borrar).on("click", ".borrar", function (e) {
     $(this).parent().parent().remove();
     imgForm = "";
     imagenes--;
-    for (let i = 0; i < imagenes; i++) {
+    for (let i = 1; i < imagenes; i++) {
         imgForm += `
     <div class="input-group mt-2">
         <div class="input-group-prepend">
             <span class="input-group-text">Imagen ${[i+1]}:</span>
         </div>
-        <input type="text" id="imagenes${[i+1]}" class="form-control">
+        <input type="text" id="imagenes${[i]}" class="form-control">
         <div class="input-group-append">
             <input type="button" value="Eliminar" class="btn btn-danger borrar" id="btnDelete">
         </div>
@@ -44,7 +44,7 @@ $(borrar).on("click", ".borrar", function (e) {
 })
 
 
-generarHTML.addEventListener("click", function () {
+generarHTML.addEventListener("click", function () {    
     const nombreEntrada = document.getElementById("nombreEntrada");
     const imagenPortada = document.getElementById("imagenPortada");
     const textoEntrada = document.getElementById("textoEntrada");
@@ -60,7 +60,7 @@ generarHTML.addEventListener("click", function () {
     const calidad = document.getElementById("calidad");
     const urlDescarga = document.getElementById("urlDescarga");
     let $imagenes = new Array();
-
+    imgHTML = "";
     for (let i = 0; i < imagenes; i++) {
         $imagenes.push(document.getElementById(`imagenes${[i]}`));
         imgHTML += `
