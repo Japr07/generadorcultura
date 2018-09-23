@@ -2,6 +2,12 @@ const generarHTML = document.getElementById("generarHTML");
 let imagenes = 1;
 let imgForm = "";
 let imgHTML = "";
+let urlForm = "";
+let urlHTML = "";
+let urls = 1;
+
+
+
 $("#imgBtn").click(function (e) {
     e.preventDefault();
     imgForm = "";
@@ -14,15 +20,63 @@ $("#imgBtn").click(function (e) {
         </div>
         <input type="text" id="imagenes${[i]}" class="form-control">
         <div class="input-group-append">
-            <input type="button" value="Eliminar" class="btn btn-danger borrar" id="btnDelete">
+            <input type="button" value="Eliminar" class="btn btn-danger borrarImg">
         </div>
     </div>
     `
     };
     $("#imgExtra").html(imgForm);
 });
-const borrar = $(".borrarinput");
-$(borrar).on("click", ".borrar", function (e) {
+
+
+$("#urlBtn").click(function (e) {
+    e.preventDefault();
+    urlForm = "";
+    urls++;
+    for (let i = 1; i < urls; i++) {
+        urlForm += `
+    <div class="input-group mt-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text">URL Descarga ${[i+1]}:</span>
+        </div>
+        <input type="text" id="urlDescarga${[i]}" class="form-control">
+        <div class="input-group-append">
+            <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+        </div>
+    </div>
+    `
+    };
+    $("#urlExtra").html(urlForm);
+});
+
+
+const borrarUrl = $(".borrarInputUrl");
+
+$(borrarUrl).on("click", ".borrarUrl", function (e) {
+    e.preventDefault();
+    $(this).parent().parent().remove();
+    urlForm = "";
+    urls--;
+    for (let i = 1; i < urls; i++) {
+        urlForm += `
+    <div class="input-group mt-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text">URL Descarga ${[i+1]}:</span>
+        </div>
+        <input type="text" id="urlDescarga${[i]}" class="form-control">
+        <div class="input-group-append">
+            <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+        </div>
+    </div>
+    `
+    }
+    $("#urlExtra").html(urlForm);
+})
+
+
+const borrarImg = $(".borrarInputImg");
+
+$(borrarImg).on("click", ".borrarImg", function (e) {
     e.preventDefault();
     $(this).parent().parent().remove();
     imgForm = "";
@@ -35,7 +89,7 @@ $(borrar).on("click", ".borrar", function (e) {
         </div>
         <input type="text" id="imagenes${[i]}" class="form-control">
         <div class="input-group-append">
-            <input type="button" value="Eliminar" class="btn btn-danger borrar" id="btnDelete">
+            <input type="button" value="Eliminar" class="btn btn-danger borrarImg">
         </div>
     </div>
     `
@@ -44,23 +98,35 @@ $(borrar).on("click", ".borrar", function (e) {
 })
 
 
-generarHTML.addEventListener("click", function () {    
+generarHTML.addEventListener("click", function () {
     const nombreEntrada = document.getElementById("nombreEntrada");
     const imagenPortada = document.getElementById("imagenPortada");
     const textoEntrada = document.getElementById("textoEntrada");
     const generos = document.getElementById("generos");
     const año = document.getElementById("año");
     const capitulos = document.getElementById("capitulos");
+    const peso = document.getElementById("peso");
+    const duracion = document.getElementById("duracion");
+    const calidad = document.getElementById("calidad");
+
     let censura = document.getElementById("censura");
     let audio = document.getElementsByClassName("audio")
     let subtitulo = document.getElementsByClassName("subtitulo");
     let formato = document.getElementsByClassName("formato");
-    const peso = document.getElementById("peso");
-    const duracion = document.getElementById("duracion");
-    const calidad = document.getElementById("calidad");
-    const urlDescarga = document.getElementById("urlDescarga");
     let $imagenes = new Array();
+    let $urls = new Array();
+
+    urlHTML = "";
+
+    for (let i = 0; i < urls; i++) {
+        $urls.push(document.getElementById(`urlDescarga${[i]}`));
+        urlHTML += `
+        <a class="btn bg-blue-violet" href="${$urls[i].value}"><i class="fas fa-file-download"></i> Carpeta Contenedora</a>        
+        `;
+    }
+
     imgHTML = "";
+
     for (let i = 0; i < imagenes; i++) {
         $imagenes.push(document.getElementById(`imagenes${[i]}`));
         imgHTML += `
@@ -85,11 +151,13 @@ generarHTML.addEventListener("click", function () {
             audio = audio[i].value
         }
     }
+
     if (censura.checked) {
         censura = "Si"
     } else {
         censura = "No"
     }
+
     let codigo = window.open("", "codigo", "width=600,height=500,scrollbars=yes,resizable=yes");
     codigo.document.body.innerText = `
     <div align=center>
@@ -141,7 +209,7 @@ generarHTML.addEventListener("click", function () {
     </div>
 <center>
     <div class="info__content flex wrap align-items-start info__content--images">
-        <a class="btn bg-blue-violet" href="${urlDescarga.value}"><i class="fas fa-file-download"></i> Carpeta Contenedora</a>
+        ${urlHTML}
     </div>
 </div>
 </center>
