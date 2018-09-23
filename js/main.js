@@ -6,8 +6,6 @@ let urlForm = "";
 let urlHTML = "";
 let urls = 1;
 
-
-
 $("#imgBtn").click(function (e) {
     e.preventDefault();
     imgForm = "";
@@ -28,7 +26,6 @@ $("#imgBtn").click(function (e) {
     $("#imgExtra").html(imgForm);
 });
 
-
 $("#urlBtn").click(function (e) {
     e.preventDefault();
     urlForm = "";
@@ -36,10 +33,9 @@ $("#urlBtn").click(function (e) {
     for (let i = 1; i < urls; i++) {
         urlForm += `
     <div class="input-group mt-2">
-        <div class="input-group-prepend">
-            <span class="input-group-text">URL Descarga ${[i+1]}:</span>
-        </div>
-        <input type="text" id="urlDescarga${[i]}" class="form-control">
+        <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
+        <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
+        <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
         <div class="input-group-append">
             <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
         </div>
@@ -48,7 +44,6 @@ $("#urlBtn").click(function (e) {
     };
     $("#urlExtra").html(urlForm);
 });
-
 
 const borrarUrl = $(".borrarInputUrl");
 
@@ -60,10 +55,9 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
     for (let i = 1; i < urls; i++) {
         urlForm += `
     <div class="input-group mt-2">
-        <div class="input-group-prepend">
-            <span class="input-group-text">URL Descarga ${[i+1]}:</span>
-        </div>
-        <input type="text" id="urlDescarga${[i]}" class="form-control">
+        <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
+        <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
+        <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
         <div class="input-group-append">
             <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
         </div>
@@ -72,7 +66,6 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
     }
     $("#urlExtra").html(urlForm);
 })
-
 
 const borrarImg = $(".borrarInputImg");
 
@@ -97,7 +90,6 @@ $(borrarImg).on("click", ".borrarImg", function (e) {
     $("#imgExtra").html(imgForm);
 })
 
-
 generarHTML.addEventListener("click", function () {
     const nombreEntrada = document.getElementById("nombreEntrada");
     const imagenPortada = document.getElementById("imagenPortada");
@@ -114,14 +106,18 @@ generarHTML.addEventListener("click", function () {
     let subtitulo = document.getElementsByClassName("subtitulo");
     let formato = document.getElementsByClassName("formato");
     let $imagenes = new Array();
-    let $urls = new Array();
+    let $urlDescarga = new Array();
+    let $urlNombre = new Array();
+    let $urlIcono = new Array();
 
     urlHTML = "";
 
     for (let i = 0; i < urls; i++) {
-        $urls.push(document.getElementById(`urlDescarga${[i]}`));
+        $urlDescarga.push(document.getElementById(`urlDescarga${[i]}`));
+        $urlNombre.push(document.getElementById(`urlNombre${[i]}`));
+        $urlIcono.push(document.getElementById(`urlIcono${[i]}`));
         urlHTML += `
-        <a class="btn bg-blue-violet" href="${$urls[i].value}"><i class="fas fa-file-download"></i> Carpeta Contenedora</a>        
+        <a class="btn bg-blue-violet" href="${$urlDescarga[i].value}">${$urlIcono[i].value} ${$urlNombre[i].value}</a>        
         `;
     }
 
@@ -161,57 +157,56 @@ generarHTML.addEventListener("click", function () {
     let codigo = window.open("", "codigo", "width=600,height=500,scrollbars=yes,resizable=yes");
     codigo.document.body.innerText = `
     <div align=center>
+        <div class="altpost__info">
+            <div class="info__content">
+                <img src="${imagenPortada.value}" alt="${nombreEntrada.value}" title="${nombreEntrada.value}"/>
+            </div>
+        </div>
+        <div class="altpost__info">
+            <div class="info__content">
+                <a>${textoEntrada.value}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="info__title flex">
+        <h4><i class="fas fa-images"></i> Capturas</h4>
+    </div>
+
+    <div class="info__content flex wrap align-items-start info__content--images">
+        ${imgHTML}
+    </div>
 
     <div class="altpost__info">
-        <div class="info__content">
-            <img src="${imagenPortada.value}" alt="${nombreEntrada.value}" title="${nombreEntrada.value}"/>
+        <div class="info__title flex">
+            <h4><i class="fas fa-info-circle"></i>Informacion</h4>
+        </div>
+        <div align=center>
+            <div class="info__content">
+                Titulo: ${nombreEntrada.value}<br/>
+                Genero: ${generos.value}<br/>
+                Año: ${año.value}<br/>
+                Capitulos: ${capitulos.value}<br/>
+                Censura: ${censura}<br/>
+                Audio: ${audio}<br/>
+                Subtítulos: ${subtitulo}<br/>
+                Formato: ${formato}<br/>
+                Tamaño: ${peso.value}MB Aprox<br/>
+                Duración: ${duracion.value} min<br/>
+                Calidad: ${calidad.value}<br/>
+            </div>
         </div>
     </div>
-
-<div class="altpost__info">
-    <div class="info__content">
-        <a>${textoEntrada.value}</a>
-    </div>
-</div>
-
-</div>
-<div class="info__title flex">
-    <h4><i class="fas fa-images"></i> Capturas</h4>
-</div>
-
-<div class="info__content flex wrap align-items-start info__content--images">
-    ${imgHTML}
-</div>
-
-<div class="altpost__info">
-    <div class="info__title flex">
-        <h4><i class="fas fa-info-circle"></i>Informacion</h4>
-    </div>
-    <div align=center>
-        <div class="info__content">
-            Titulo: ${nombreEntrada.value}<br/>
-            Genero: ${generos.value}<br/>
-            Año: ${año.value}<br/>
-            Capitulos: ${capitulos.value}<br/>
-            Censura: ${censura}<br/>
-            Audio: ${audio}<br/>
-            Subtítulos: ${subtitulo}<br/>
-            Formato: ${formato}<br/>
-            Tamaño: ${peso.value}MB Aprox<br/>
-            Duración: ${duracion.value} min<br/>
-            Calidad: ${calidad.value}<br/>
+    
+    <div class="altpost__info">
+        <div class="info__title flex">
+            <h4><i class="fas fa-download"></i> Descargas</h4>
+        </div>
+    <center>
+        <div class="info__content flex wrap align-items-start info__content--images">
+            ${urlHTML}
         </div>
     </div>
-</div>
-<div class="altpost__info">
-    <div class="info__title flex">
-        <h4><i class="fas fa-download"></i> Descargas</h4>
-    </div>
-<center>
-    <div class="info__content flex wrap align-items-start info__content--images">
-        ${urlHTML}
-    </div>
-</div>
-</center>
+    </center>
     `;
 });

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +68,8 @@
                 <div class="form-check form-check-inline">
                     <label class="input-group-text mb-2">Audio?</label>
                     <form>
-                        <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Japones" checked>Japones
+                        <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Japones"
+                            checked>Japones
                         <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Español">Español
                     </form>
                 </div>
@@ -76,7 +77,8 @@
                     <label class="input-group-text mb-2">Subtitulo?</label>
                     <form>
                         <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Ingles">Ingles
-                        <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Ninguno" checked>Ninguno                        
+                        <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Ninguno"
+                            checked>Ninguno
                         <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Japones">Japones
                         <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Español">Español
                     </form>
@@ -85,7 +87,8 @@
                     <label class="input-group-text mb-2">Formato de Video?</label>
                     <form>
                         <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="MP4">MP4
-                        <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="MKV" checked>MKV                        
+                        <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="MKV"
+                            checked>MKV
                         <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="FLV">FLV
                     </form>
                 </div>
@@ -108,12 +111,11 @@
                     <input type="text" id="calidad" class="form-control">
                 </div>
                 <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">URL Descarga:</span>
-                    </div>
-                    <input type="text" id="urlDescarga0" class="form-control">
+                    <input type="text" placeholder="Nombre URL" id="urlNombre0" class="form-control">
+                    <input type="text" placeholder="Insertar URL" id="urlDescarga0" class="form-control">
+                    <input type="text" placeholder="Icono" id="urlIcono0" class="form-control">
                     <div class="input-group-append">
-                        <input type="button" value="Añadir + URL" class="btn btn-success" id="urlBtn">
+                        <input type="button" value="Añadir +" class="btn btn-success" id="urlBtn">
                     </div>
                 </div>
                 <div id="urlExtra" class="borrarInputUrl"></div>
@@ -121,7 +123,7 @@
         </div>
     </div>
     <div class="container">
-        <input type="button" value="Generar HTML" id="generarHTML" class="btn btn-success btn-lg btn-block mb-5 mt-5">
+        <input type="button" value="Generar HTML" id="generarHTML" class="btn btn-dark btn-lg btn-block mb-5 mt-5">
     </div>
     <script src="js/main.js"></script>
 </body>
