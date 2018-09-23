@@ -1,10 +1,11 @@
 const generarHTML = document.getElementById("generarHTML");
-let imagenes = 1;
+let imagenes = 0;
 let imgForm = "";
 let imgHTML = "";
 $("#imgBtn").click(function (e) {
     e.preventDefault();
-    imgForm = ""
+    imgForm = "";
+    imagenes++;
     for (let i = 0; i < imagenes; i++) {
         imgForm += `
     <div class="input-group mt-2">
@@ -18,17 +19,14 @@ $("#imgBtn").click(function (e) {
     </div>
     `
     };
-
     $("#imgExtra").html(imgForm);
-    imgForm = "";
-    imagenes++;
 });
 const borrar = $(".borrarinput");
 $(borrar).on("click", ".borrar", function (e) {
     e.preventDefault();
+    $(this).parent().parent().remove();
     imgForm = "";
     imagenes--;
-    $(this).parent().parent().remove();
     for (let i = 0; i < imagenes; i++) {
         imgForm += `
     <div class="input-group mt-2">
@@ -43,7 +41,6 @@ $(borrar).on("click", ".borrar", function (e) {
     `
     }
     $("#imgExtra").html(imgForm);
-    imgForm = "";
 })
 
 
