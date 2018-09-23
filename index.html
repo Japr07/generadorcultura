@@ -8,6 +8,7 @@
     <title>Generador HTML</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -32,13 +33,17 @@
                     </div>
                     <input type="text" id="generos" class="form-control">
                 </div>
-                <div class="input-group mb-2">
+                <div class="input-group mb-2" id="imgInput">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Imagenes:</span>
+                        <span class="input-group-text">Imagen:</span>
                     </div>
-                    <input type="text" id="imagenes" class="form-control">
+                    <input type="text" id="imagenes0" class="form-control">
+                    <div class="input-group-append">
+                        <input type="button" value="Añadir otra IMG" class="btn btn-success" id="imgBtn">
+                    </div>
                 </div>
-                <div class="input-group mb-2">
+                <div id="imgExtra" class="borrarinput"></div>
+                <div class="input-group mb-2 mt-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Año:</span>
                     </div>

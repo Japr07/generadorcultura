@@ -1,11 +1,57 @@
 const generarHTML = document.getElementById("generarHTML");
+let imagenes = 1;
+let imgForm = "";
+let imgHTML = "";
+$("#imgBtn").click(function (e) {
+    e.preventDefault();
+    imgForm = ""
+    for (let i = 0; i < imagenes; i++) {
+        imgForm += `
+    <div class="input-group mt-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Imagen ${[i+1]}:</span>
+        </div>
+        <input type="text" id="imagenes${[i+1]}" class="form-control">
+        <div class="input-group-append">
+            <input type="button" value="Eliminar" class="btn btn-danger borrar" id="btnDelete">
+        </div>
+    </div>
+    `
+    };
+
+    $("#imgExtra").html(imgForm);
+    imgForm = "";
+    imagenes++;
+});
+const borrar = $(".borrarinput");
+$(borrar).on("click", ".borrar", function (e) {
+    e.preventDefault();
+    imgForm = "";
+    imagenes--;
+    $(this).parent().parent().remove();
+    for (let i = 0; i < imagenes; i++) {
+        imgForm += `
+    <div class="input-group mt-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Imagen ${[i+1]}:</span>
+        </div>
+        <input type="text" id="imagenes${[i+1]}" class="form-control">
+        <div class="input-group-append">
+            <input type="button" value="Eliminar" class="btn btn-danger borrar" id="btnDelete">
+        </div>
+    </div>
+    `
+    }
+    $("#imgExtra").html(imgForm);
+    imgForm = "";
+})
+
 
 generarHTML.addEventListener("click", function () {
     const nombreEntrada = document.getElementById("nombreEntrada");
     const imagenPortada = document.getElementById("imagenPortada");
     const textoEntrada = document.getElementById("textoEntrada");
     const generos = document.getElementById("generos");
-    const imagenes = document.getElementById("imagenes");
     const año = document.getElementById("año");
     const capitulos = document.getElementById("capitulos");
     let censura = document.getElementById("censura");
@@ -16,7 +62,14 @@ generarHTML.addEventListener("click", function () {
     const duracion = document.getElementById("duracion");
     const calidad = document.getElementById("calidad");
     const urlDescarga = document.getElementById("urlDescarga");
+    let $imagenes = new Array();
 
+    for (let i = 0; i < imagenes; i++) {
+        $imagenes.push(document.getElementById(`imagenes${[i]}`));
+        imgHTML += `
+        <img src="${$imagenes[i].value}">
+        `;
+    }
 
     for (var i = 0; i < formato.length; i++) {
         if (formato[i].checked) {
@@ -62,7 +115,7 @@ generarHTML.addEventListener("click", function () {
 </div>
 
 <div class="info__content flex wrap align-items-start info__content--images">
-    <img src="${imagenes.value}"><!-- duplica esta etiqueta tantas veces como sean necesarias -->
+    ${imgHTML}
 </div>
 
 <div class="altpost__info">
