@@ -1,10 +1,10 @@
 const generarHTML = document.getElementById("generarHTML");
 let imagenes = 1;
-let imgForm = "";
-let imgHTML = "";
-let urlForm = "";
-let urlHTML = "";
 let urls = 1;
+let imgForm = "";
+let urlForm = "";
+let imgHTML = "";
+let urlHTML = "";
 
 $("#imgBtn").click(function (e) {
     e.preventDefault();
