@@ -117,7 +117,7 @@ generarHTML.addEventListener("click", function () {
         $urlNombre.push(document.getElementById(`urlNombre${[i]}`));
         $urlIcono.push(document.getElementById(`urlIcono${[i]}`));
         urlHTML += `
-        <a class="btn bg-blue-violet" href="${$urlDescarga[i].value}">${$urlIcono[i].value} ${$urlNombre[i].value}</a>        
+        <a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank">${$urlIcono[i].value} ${$urlNombre[i].value}</a>        
         `;
     }
 
