@@ -1,5 +1,6 @@
 const generarHTML = document.getElementById("generarHTML");
 let imagenes = 1;
+let imgCount = 0;
 let urls = 1;
 let imgForm = "";
 let urlForm = "";
@@ -10,6 +11,16 @@ $("#imgBtn").click(function (e) {
     e.preventDefault();
     imgForm = "";
     imagenes++;
+    let imgSave = new Array();
+    let posicionImg;
+
+    for (let i = 1; i <= imgCount; i++) {
+        posicionImg = document.getElementById(`imagenes${[i]}`).value;
+        imgSave.push(posicionImg);
+    }
+
+    imgCount++
+
     for (let i = 1; i < imagenes; i++) {
         imgForm += `
     <div class="input-group mt-2">
@@ -23,7 +34,13 @@ $("#imgBtn").click(function (e) {
     </div>
     `
     };
+
+
     $("#imgExtra").html(imgForm);
+    for (let i = 1; i < imgCount; i++) {
+        document.getElementById(`imagenes${[i]}`).value = imgSave[i - 1];
+
+    }
 });
 
 $("#urlBtn").click(function (e) {
@@ -71,9 +88,21 @@ const borrarImg = $(".borrarInputImg");
 
 $(borrarImg).on("click", ".borrarImg", function (e) {
     e.preventDefault();
-    $(this).parent().parent().remove();
     imgForm = "";
     imagenes--;
+    let imgSave = new Array();
+    let posicionImg;
+
+    for (let i = 1; i <= imgCount; i++) {
+        posicionImg = document.getElementById(`imagenes${[i]}`).value;
+        imgSave.push(posicionImg);
+    }
+    imgSave.splice(imgSave.indexOf($(this).parent().prev().val()),1);
+    imgCount--;
+
+
+    $(this).parent().parent().remove();
+
     for (let i = 1; i < imagenes; i++) {
         imgForm += `
     <div class="input-group mt-2">
@@ -87,7 +116,13 @@ $(borrarImg).on("click", ".borrarImg", function (e) {
     </div>
     `
     }
+
     $("#imgExtra").html(imgForm);
+
+    for (let i = 0; i < imgCount; i++) {
+        document.getElementById(`imagenes${[i+1]}`).value = imgSave[i];
+
+    }
 })
 
 generarHTML.addEventListener("click", function () {
