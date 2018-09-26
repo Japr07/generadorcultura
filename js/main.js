@@ -203,6 +203,7 @@ function mostrarPreSecHtml() {
 //////////////*/
 
 let preCount = 0;
+let precuelas = 0;
 let preForm = "";
 let preHTML = "";
 
@@ -210,8 +211,22 @@ $("#preBtn").click(function (e) {
     e.preventDefault();
     preSec = true;
     preForm = "";
-    preCount++;
+    let preSaveNombre = new Array();
+    let preSaveDireccion = new Array();
+    let posicionNombre;
+    let posicionDireccion;
+    
     for (let i = 0; i < preCount; i++) {
+        posicionNombre = document.getElementById(`preNombre${[i]}`).value;
+        posicionDireccion = document.getElementById(`preDescarga${[i]}`).value;        
+        preSaveNombre.push(posicionNombre);
+        preSaveDireccion.push(posicionDireccion);
+    }
+
+    preCount++;    
+    precuelas++
+
+    for (let i = 0; i < precuelas; i++) {
         preForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Precuela:</span>
@@ -224,15 +239,38 @@ $("#preBtn").click(function (e) {
         </div>`
     }
     $("#pre").html(preForm);
+
+    for (let i = 1; i < preCount; i++) {
+        document.getElementById(`preNombre${[i-1]}`).value = preSaveNombre[i-1];
+        document.getElementById(`preDescarga${[i-1]}`).value = preSaveDireccion[i-1];
+    }
 });
 
 const borrarPre = $(".borrarInputPre");
 
 $(borrarPre).on("click", ".borrarPre", function (e) {
     e.preventDefault();
-    $(this).parent().parent().remove();
     preForm = "";
+    precuelas--;
+
+    let nombreSave = new Array();
+    let direccionSave = new Array();
+    let posicionNombre;
+    let posicionDireccion;
+
+    for (let i = 0; i < preCount; i++) {
+        posicionNombre = document.getElementById(`preNombre${[i]}`).value;
+        nombreSave.push(posicionNombre);        
+        posicionDireccion = document.getElementById(`preDescarga${[i]}`).value;
+        direccionSave.push(posicionDireccion);
+    }
+
+    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().val()), 1);
+    direccionSave.splice(direccionSave.indexOf($(this).parent().prev().val()), 1);    
     preCount--;
+    
+    $(this).parent().parent().remove();
+
     for (let i = 0; i < preCount; i++) {
         preForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -251,6 +289,11 @@ $(borrarPre).on("click", ".borrarPre", function (e) {
     }
 
     $("#pre").html(preForm);
+
+    for (let i = 0; i < preCount; i++) {
+        document.getElementById(`preNombre${[i]}`).value = nombreSave[i];        
+        document.getElementById(`preDescarga${[i]}`).value = direccionSave[i];
+    }
 })
 
 /*//////////////
@@ -259,6 +302,7 @@ $(borrarPre).on("click", ".borrarPre", function (e) {
 
 
 let secCount = 0;
+let secuelas = 0;
 let secForm = "";
 let secHTML = "";
 
@@ -267,8 +311,22 @@ $("#secBtn").click(function (e) {
     e.preventDefault();
     preSec = true;
     secForm = "";
-    secCount++;
+    let secSaveNombre = new Array();
+    let secSaveDireccion = new Array();
+    let posicionNombre;
+    let posicionDireccion;
+    
     for (let i = 0; i < secCount; i++) {
+        posicionNombre = document.getElementById(`secNombre${[i]}`).value;
+        posicionDireccion = document.getElementById(`secDescarga${[i]}`).value;        
+        secSaveNombre.push(posicionNombre);
+        secSaveDireccion.push(posicionDireccion);
+    }
+
+    secCount++;    
+    secuelas++;
+
+    for (let i = 0; i < secuelas; i++) {
         secForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Secuela:</span>
@@ -281,16 +339,44 @@ $("#secBtn").click(function (e) {
         </div>`
     }
     $("#sec").html(secForm);
+
+    for (let i = 1; i < secCount; i++) {
+        document.getElementById(`secNombre${[i-1]}`).value = secSaveNombre[i-1];
+        document.getElementById(`secDescarga${[i-1]}`).value = secSaveDireccion[i-1];
+    }
 });
 
 const borrarSec = $(".borrarInputSec");
 
 $(borrarSec).on("click", ".borrarSec", function (e) {
     e.preventDefault();
-    $(this).parent().parent().remove();
     secForm = "";
-    secCount--;
+    secuelas--;
+    let nombreSave = new Array();
+    let direccionSave = new Array();
+    let posicionNombre;
+    let posicionDireccion;
+
     for (let i = 0; i < secCount; i++) {
+        posicionNombre = document.getElementById(`secNombre${[i]}`).value;
+        nombreSave.push(posicionNombre);        
+        posicionDireccion = document.getElementById(`secDescarga${[i]}`).value;
+        direccionSave.push(posicionDireccion);
+    }
+    
+    console.log(nombreSave);
+    console.log($(this).parent().prev().val());    
+    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().val()), 1);
+    direccionSave.splice(direccionSave.indexOf($(this).parent().prev().val()), 1);    
+    secCount--;
+
+    console.log(nombreSave);
+
+
+    $(this).parent().parent().remove();
+
+
+    for (let i = 0; i < secuelas; i++) {
         secForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Secuela:</span>
@@ -303,11 +389,16 @@ $(borrarSec).on("click", ".borrarSec", function (e) {
         </div>`
     }
 
-    if (preCount == 0 && secCount == 0) {
+    if (preCount == 0 && secuelas == 0) {
         preSec = false;
     }
 
     $("#sec").html(secForm);
+
+    for (let i = 0; i < secCount; i++) {
+        document.getElementById(`secNombre${[i]}`).value = nombreSave[i];        
+        document.getElementById(`secDescarga${[i]}`).value = direccionSave[i];
+    }
 })
 
 /*//////////////
