@@ -169,8 +169,10 @@ function mostrarUrlHTML() {
 //////////////*/
 
 let preSec = false;
+let mostrarPreSec = "";
 
 function mostrarPreSecHtml() {
+
     if (preSec) {
         let $preNombre = new Array();
         let $preDireccion = new Array();
@@ -185,7 +187,7 @@ function mostrarPreSecHtml() {
                 $preNombre.push(document.getElementById(`preNombre${[i]}`));
                 $preDireccion.push(document.getElementById(`preDescarga${[i]}`));
                 preHTML += `
-                <div class="related-links"><span><b>Precuela</b></span><span><a href="${$preDireccion[i].value}">${$preNombre[i].value}</a></span></div>
+                <span><b>Precuela</b></span><span><a href="${$preDireccion[i].value}">${$preNombre[i].value}</a></span>
                 `;
             }
         }
@@ -194,13 +196,19 @@ function mostrarPreSecHtml() {
                 $secNombre.push(document.getElementById(`secNombre${[i]}`));
                 $secDireccion.push(document.getElementById(`secDescarga${[i]}`));
                 preHTML += `
-                <div class="related-links"><span><b>Secuela</b></span><span><a href="${$secDireccion[i].value}">${$secNombre[i].value}</a></span></div>
+                <span><b>Secuela</b></span><span><a href="${$secDireccion[i].value}">${$secNombre[i].value}</a></span>
                 `;
             }
         }
+
+        mostrarPreSec = `
+        <div class="related-links">
+            ${preHTML}
+            ${secHTML}
+        </div>
+        `;
     } else {
-        preHTML = "";
-        secHTML = "";
+        mostrarPreSec = "";
     }
 };
 
@@ -255,7 +263,7 @@ $(borrarPre).on("click", ".borrarPre", function (e) {
         </div>
        `
     }
-    
+
     if (preCount == 0 && secCount == 0) {
         preSec = false;
     }
@@ -316,7 +324,7 @@ $(borrarSec).on("click", ".borrarSec", function (e) {
         </div>
        `
     }
-    
+
     if (preCount == 0 && secCount == 0) {
         preSec = false;
     }
@@ -383,8 +391,7 @@ generarHTML.addEventListener("click", function () {
         <div class="altpost__info">
             <div class="info__content">
                 <a>${textoEntrada.value}</a>
-                ${preHTML}
-                ${secHTML}
+                ${mostrarPreSec}
             </div>
         </div>
     </div>
