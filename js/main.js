@@ -25,17 +25,15 @@ $("#imgBtn").click(function (e) {
     imagenes++;
 
     for (let i = 1; i < imagenes; i++) {
-        imgForm += `
-    <div class="input-group mt-2">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Imagen ${[i+1]}:</span>
-        </div>
-        <input type="text" id="imagenes${[i]}" class="form-control">
-        <div class="input-group-append">
-            <input type="button" value="Eliminar" class="btn btn-danger borrarImg">
-        </div>
-    </div>
-    `
+        imgForm += `<div class="input-group mt-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Imagen ${[i+1]}:</span>
+            </div>
+            <input type="text" id="imagenes${[i]}" class="form-control">
+            <div class="input-group-append">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarImg">
+            </div>
+        </div>`
     };
 
 
@@ -66,17 +64,15 @@ $(borrarImg).on("click", ".borrarImg", function (e) {
     $(this).parent().parent().remove();
 
     for (let i = 1; i < imagenes; i++) {
-        imgForm += `
-    <div class="input-group mt-2">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Imagen ${[i+1]}:</span>
-        </div>
-        <input type="text" id="imagenes${[i]}" class="form-control">
-        <div class="input-group-append">
-            <input type="button" value="Eliminar" class="btn btn-danger borrarImg">
-        </div>
-    </div>
-    `
+        imgForm += `<div class="input-group mt-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Imagen ${[i+1]}:</span>
+            </div>
+            <input type="text" id="imagenes${[i]}" class="form-control">
+            <div class="input-group-append">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarImg">
+            </div>
+        </div>`
     }
 
     $("#imgExtra").html(imgForm);
@@ -111,16 +107,14 @@ $("#urlBtn").click(function (e) {
     urlForm = "";
     urls++;
     for (let i = 1; i < urls; i++) {
-        urlForm += `
-    <div class="input-group mt-2">
-        <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
-        <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
-        <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
-        <div class="input-group-append">
-            <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
-        </div>
-    </div>
-    `
+        urlForm += `<div class="input-group mt-2">
+            <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
+            <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
+            <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
+            <div class="input-group-append">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+            </div>
+        </div>`
     };
     $("#urlExtra").html(urlForm);
 });
@@ -133,16 +127,14 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
     urlForm = "";
     urls--;
     for (let i = 1; i < urls; i++) {
-        urlForm += `
-    <div class="input-group mt-2">
-        <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
-        <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
-        <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
-        <div class="input-group-append">
-            <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
-        </div>
-    </div>
-    `
+        urlForm += `<div class="input-group mt-2">
+            <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
+            <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
+            <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
+            <div class="input-group-append">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+            </div>
+        </div>`
     }
     $("#urlExtra").html(urlForm);
 });
@@ -158,9 +150,7 @@ function mostrarUrlHTML() {
         $urlDescarga.push(document.getElementById(`urlDescarga${[i]}`));
         $urlNombre.push(document.getElementById(`urlNombre${[i]}`));
         $urlIcono.push(document.getElementById(`urlIcono${[i]}`));
-        urlHTML += `
-        <a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank">${$urlIcono[i].value} ${$urlNombre[i].value}</a>        
-        `;
+        urlHTML += `<a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank">${$urlIcono[i].value} ${$urlNombre[i].value}</a>`;
     }
 };
 
@@ -186,8 +176,7 @@ function mostrarPreSecHtml() {
             for (let i = 0; i < preCount; i++) {
                 $preNombre.push(document.getElementById(`preNombre${[i]}`));
                 $preDireccion.push(document.getElementById(`preDescarga${[i]}`));
-                preHTML += `
-                <span><b>Precuela</b></span><span><a href="${$preDireccion[i].value}">${$preNombre[i].value}</a></span>
+                preHTML += `<span><b>Precuela</b></span><span><a href="${$preDireccion[i].value}">${$preNombre[i].value}</a></span>
                 `;
             }
         }
@@ -195,18 +184,15 @@ function mostrarPreSecHtml() {
             for (let i = 0; i < secCount; i++) {
                 $secNombre.push(document.getElementById(`secNombre${[i]}`));
                 $secDireccion.push(document.getElementById(`secDescarga${[i]}`));
-                preHTML += `
-                <span><b>Secuela</b></span><span><a href="${$secDireccion[i].value}">${$secNombre[i].value}</a></span>
+                preHTML += `<span><b>Secuela</b></span><span><a href="${$secDireccion[i].value}">${$secNombre[i].value}</a></span>
                 `;
             }
         }
 
-        mostrarPreSec = `
-        <div class="related-links">
+        mostrarPreSec = `<div class="related-links">
             ${preHTML}
             ${secHTML}
-        </div>
-        `;
+        </div>`;
     } else {
         mostrarPreSec = "";
     }
@@ -226,8 +212,7 @@ $("#preBtn").click(function (e) {
     preForm = "";
     preCount++;
     for (let i = 0; i < preCount; i++) {
-        preForm += `
-        <div class="input-group mb-2">
+        preForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Precuela:</span>
             </div>
@@ -236,8 +221,7 @@ $("#preBtn").click(function (e) {
             <div class="input-group-append">
                 <input type="button" value="Eliminar" class="btn btn-danger borrarPre">
             </div>
-        </div>
-       `
+        </div>`
     }
     $("#pre").html(preForm);
 });
@@ -250,8 +234,7 @@ $(borrarPre).on("click", ".borrarPre", function (e) {
     preForm = "";
     preCount--;
     for (let i = 0; i < preCount; i++) {
-        preForm += `
-        <div class="input-group mb-2">
+        preForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Precuela:</span>
             </div>
@@ -260,8 +243,7 @@ $(borrarPre).on("click", ".borrarPre", function (e) {
             <div class="input-group-append">
                 <input type="button" value="Eliminar" class="btn btn-danger borrarPre">
             </div>
-        </div>
-       `
+        </div>`
     }
 
     if (preCount == 0 && secCount == 0) {
@@ -287,8 +269,7 @@ $("#secBtn").click(function (e) {
     secForm = "";
     secCount++;
     for (let i = 0; i < secCount; i++) {
-        secForm += `
-        <div class="input-group mb-2">
+        secForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Secuela:</span>
             </div>
@@ -297,8 +278,7 @@ $("#secBtn").click(function (e) {
             <div class="input-group-append">
                 <input type="button" value="Eliminar" class="btn btn-danger borrarSec">
             </div>
-        </div>
-       `
+        </div>`
     }
     $("#sec").html(secForm);
 });
@@ -311,8 +291,7 @@ $(borrarSec).on("click", ".borrarSec", function (e) {
     secForm = "";
     secCount--;
     for (let i = 0; i < secCount; i++) {
-        secForm += `
-        <div class="input-group mb-2">
+        secForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Secuela:</span>
             </div>
@@ -321,8 +300,7 @@ $(borrarSec).on("click", ".borrarSec", function (e) {
             <div class="input-group-append">
                 <input type="button" value="Eliminar" class="btn btn-danger borrarSec">
             </div>
-        </div>
-       `
+        </div>`
     }
 
     if (preCount == 0 && secCount == 0) {
@@ -381,8 +359,7 @@ generarHTML.addEventListener("click", function () {
     }
 
     let codigo = window.open("", "codigo", "width=600,height=500,scrollbars=yes,resizable=yes");
-    codigo.document.body.innerText = `
-    <div align=center>
+    codigo.document.body.innerText = `<div align=center>
         <div class="altpost__info">
             <div class="info__content">
                 <img src="${imagenPortada.value}" alt="${nombreEntrada.value}" title="${nombreEntrada.value}"/>
@@ -434,6 +411,5 @@ generarHTML.addEventListener("click", function () {
             ${urlHTML}
         </div>
     </div>
-    </center>
-    `;
+    </center>`;
 });
