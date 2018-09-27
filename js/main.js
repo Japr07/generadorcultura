@@ -12,7 +12,9 @@ let imgHTML = "";
 
 $("#imgBtn").click(function (e) {
     e.preventDefault();
+
     imgForm = "";
+    
     let imgSave = new Array();
     let posicionImg;
 
@@ -36,11 +38,10 @@ $("#imgBtn").click(function (e) {
         </div>`
     };
 
-
     $("#imgExtra").html(imgForm);
+
     for (let i = 1; i < imgCount; i++) {
         document.getElementById(`imagenes${[i]}`).value = imgSave[i - 1];
-
     }
 });
 
@@ -48,8 +49,10 @@ const borrarImg = $(".borrarInputImg");
 
 $(borrarImg).on("click", ".borrarImg", function (e) {
     e.preventDefault();
+
     imgForm = "";
     imagenes--;
+
     let imgSave = new Array();
     let posicionImg;
 
@@ -57,9 +60,9 @@ $(borrarImg).on("click", ".borrarImg", function (e) {
         posicionImg = document.getElementById(`imagenes${[i]}`).value;
         imgSave.push(posicionImg);
     }
+
     imgSave.splice(imgSave.indexOf($(this).parent().prev().val()), 1);
     imgCount--;
-
 
     $(this).parent().parent().remove();
 
@@ -89,8 +92,7 @@ function mostrarImgHTML() {
     for (let i = 0; i < imagenes; i++) {
         $imagenes.push(document.getElementById(`imagenes${[i]}`));
         imgHTML += `
-        <img src="${$imagenes[i].value}">
-        `;
+        <img src="${$imagenes[i].value}">`;
     }
 };
 
@@ -99,13 +101,35 @@ function mostrarImgHTML() {
 //////////////*/
 
 let urls = 1;
+let urlCount = 0;
 let urlForm = "";
 let urlHTML = "";
 
 $("#urlBtn").click(function (e) {
     e.preventDefault();
+
     urlForm = "";
+
+    let nombreSave = new Array();
+    let urlSave = new Array();
+    let iconoSave = new Array();
+
+    let posicionNombre;
+    let posicionUrl;
+    let posicionIcono;
+
+    for (let i = 1; i <= urlCount; i++) {
+        posicionNombre = document.getElementById(`urlNombre${[i]}`).value;
+        posicionUrl = document.getElementById(`urlDescarga${[i]}`).value;
+        posicionIcono = document.getElementById(`urlIcono${[i]}`).value;
+        nombreSave.push(posicionNombre);
+        urlSave.push(posicionUrl);
+        iconoSave.push(posicionIcono);
+    }
+
+    urlCount++;
     urls++;
+
     for (let i = 1; i < urls; i++) {
         urlForm += `<div class="input-group mt-2">
             <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
@@ -116,16 +140,49 @@ $("#urlBtn").click(function (e) {
             </div>
         </div>`
     };
+
     $("#urlExtra").html(urlForm);
+
+    for (let i = 1; i < urlCount; i++) {
+        document.getElementById(`urlNombre${[i]}`).value = nombreSave[i - 1];
+        document.getElementById(`urlDescarga${[i]}`).value = urlSave[i - 1];
+        document.getElementById(`urlIcono${[i]}`).value = iconoSave[i - 1];
+    }
 });
 
 const borrarUrl = $(".borrarInputUrl");
 
 $(borrarUrl).on("click", ".borrarUrl", function (e) {
     e.preventDefault();
-    $(this).parent().parent().remove();
+
     urlForm = "";
     urls--;
+
+    let nombreSave = new Array();
+    let urlSave = new Array();
+    let iconoSave = new Array();
+
+    let posicionNombre;
+    let posicionUrl;
+    let posicionIcono;
+
+    for (let i = 1; i <= urlCount; i++) {
+        posicionNombre = document.getElementById(`urlNombre${[i]}`).value;
+        posicionUrl = document.getElementById(`urlDescarga${[i]}`).value;
+        posicionIcono = document.getElementById(`urlIcono${[i]}`).value;
+        nombreSave.push(posicionNombre);
+        urlSave.push(posicionUrl);
+        iconoSave.push(posicionIcono);
+    }
+
+    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().prev().val()), 1)
+    urlSave.splice(urlSave.indexOf($(this).parent().prev().prev().val()), 1)
+    iconoSave.splice(iconoSave.indexOf($(this).parent().prev().val()), 1)
+
+    urlCount--;
+
+    $(this).parent().parent().remove();
+
     for (let i = 1; i < urls; i++) {
         urlForm += `<div class="input-group mt-2">
             <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
@@ -136,7 +193,15 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
             </div>
         </div>`
     }
+
     $("#urlExtra").html(urlForm);
+
+    for (let i = 0; i < urlCount; i++) {
+        document.getElementById(`urlNombre${[i+1]}`).value = nombreSave[i];
+        document.getElementById(`urlDescarga${[i+1]}`).value = urlSave[i];
+        document.getElementById(`urlIcono${[i+1]}`).value = iconoSave[i];
+    }
+
 });
 
 function mostrarUrlHTML() {
@@ -180,6 +245,7 @@ function mostrarPreSecHtml() {
                 `;
             }
         }
+
         if (secCount > 0) {
             for (let i = 0; i < secCount; i++) {
                 $secNombre.push(document.getElementById(`secNombre${[i]}`));
@@ -209,21 +275,24 @@ let preHTML = "";
 
 $("#preBtn").click(function (e) {
     e.preventDefault();
+
     preSec = true;
     preForm = "";
+
     let preSaveNombre = new Array();
     let preSaveDireccion = new Array();
+
     let posicionNombre;
     let posicionDireccion;
-    
+
     for (let i = 0; i < preCount; i++) {
         posicionNombre = document.getElementById(`preNombre${[i]}`).value;
-        posicionDireccion = document.getElementById(`preDescarga${[i]}`).value;        
+        posicionDireccion = document.getElementById(`preDescarga${[i]}`).value;
         preSaveNombre.push(posicionNombre);
         preSaveDireccion.push(posicionDireccion);
     }
 
-    preCount++;    
+    preCount++;
     precuelas++
 
     for (let i = 0; i < precuelas; i++) {
@@ -238,11 +307,12 @@ $("#preBtn").click(function (e) {
             </div>
         </div>`
     }
+
     $("#pre").html(preForm);
 
     for (let i = 1; i < preCount; i++) {
-        document.getElementById(`preNombre${[i-1]}`).value = preSaveNombre[i-1];
-        document.getElementById(`preDescarga${[i-1]}`).value = preSaveDireccion[i-1];
+        document.getElementById(`preNombre${[i-1]}`).value = preSaveNombre[i - 1];
+        document.getElementById(`preDescarga${[i-1]}`).value = preSaveDireccion[i - 1];
     }
 });
 
@@ -250,25 +320,27 @@ const borrarPre = $(".borrarInputPre");
 
 $(borrarPre).on("click", ".borrarPre", function (e) {
     e.preventDefault();
+
     preForm = "";
     precuelas--;
 
     let nombreSave = new Array();
     let direccionSave = new Array();
+
     let posicionNombre;
     let posicionDireccion;
 
     for (let i = 0; i < preCount; i++) {
         posicionNombre = document.getElementById(`preNombre${[i]}`).value;
-        nombreSave.push(posicionNombre);        
+        nombreSave.push(posicionNombre);
         posicionDireccion = document.getElementById(`preDescarga${[i]}`).value;
         direccionSave.push(posicionDireccion);
     }
 
     nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().val()), 1);
-    direccionSave.splice(direccionSave.indexOf($(this).parent().prev().val()), 1);    
+    direccionSave.splice(direccionSave.indexOf($(this).parent().prev().val()), 1);
     preCount--;
-    
+
     $(this).parent().parent().remove();
 
     for (let i = 0; i < preCount; i++) {
@@ -291,7 +363,7 @@ $(borrarPre).on("click", ".borrarPre", function (e) {
     $("#pre").html(preForm);
 
     for (let i = 0; i < preCount; i++) {
-        document.getElementById(`preNombre${[i]}`).value = nombreSave[i];        
+        document.getElementById(`preNombre${[i]}`).value = nombreSave[i];
         document.getElementById(`preDescarga${[i]}`).value = direccionSave[i];
     }
 })
@@ -309,21 +381,24 @@ let secHTML = "";
 
 $("#secBtn").click(function (e) {
     e.preventDefault();
+
     preSec = true;
     secForm = "";
+
     let secSaveNombre = new Array();
     let secSaveDireccion = new Array();
+
     let posicionNombre;
     let posicionDireccion;
-    
+
     for (let i = 0; i < secCount; i++) {
         posicionNombre = document.getElementById(`secNombre${[i]}`).value;
-        posicionDireccion = document.getElementById(`secDescarga${[i]}`).value;        
+        posicionDireccion = document.getElementById(`secDescarga${[i]}`).value;
         secSaveNombre.push(posicionNombre);
         secSaveDireccion.push(posicionDireccion);
     }
 
-    secCount++;    
+    secCount++;
     secuelas++;
 
     for (let i = 0; i < secuelas; i++) {
@@ -341,8 +416,8 @@ $("#secBtn").click(function (e) {
     $("#sec").html(secForm);
 
     for (let i = 1; i < secCount; i++) {
-        document.getElementById(`secNombre${[i-1]}`).value = secSaveNombre[i-1];
-        document.getElementById(`secDescarga${[i-1]}`).value = secSaveDireccion[i-1];
+        document.getElementById(`secNombre${[i-1]}`).value = secSaveNombre[i - 1];
+        document.getElementById(`secDescarga${[i-1]}`).value = secSaveDireccion[i - 1];
     }
 });
 
@@ -350,31 +425,29 @@ const borrarSec = $(".borrarInputSec");
 
 $(borrarSec).on("click", ".borrarSec", function (e) {
     e.preventDefault();
+
     secForm = "";
     secuelas--;
+
     let nombreSave = new Array();
     let direccionSave = new Array();
+
     let posicionNombre;
     let posicionDireccion;
 
     for (let i = 0; i < secCount; i++) {
         posicionNombre = document.getElementById(`secNombre${[i]}`).value;
-        nombreSave.push(posicionNombre);        
+        nombreSave.push(posicionNombre);
         posicionDireccion = document.getElementById(`secDescarga${[i]}`).value;
         direccionSave.push(posicionDireccion);
     }
-    
-    console.log(nombreSave);
-    console.log($(this).parent().prev().val());    
+
     nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().val()), 1);
-    direccionSave.splice(direccionSave.indexOf($(this).parent().prev().val()), 1);    
+    direccionSave.splice(direccionSave.indexOf($(this).parent().prev().val()), 1);
+
     secCount--;
 
-    console.log(nombreSave);
-
-
     $(this).parent().parent().remove();
-
 
     for (let i = 0; i < secuelas; i++) {
         secForm += `<div class="input-group mb-2">
@@ -396,7 +469,7 @@ $(borrarSec).on("click", ".borrarSec", function (e) {
     $("#sec").html(secForm);
 
     for (let i = 0; i < secCount; i++) {
-        document.getElementById(`secNombre${[i]}`).value = nombreSave[i];        
+        document.getElementById(`secNombre${[i]}`).value = nombreSave[i];
         document.getElementById(`secDescarga${[i]}`).value = direccionSave[i];
     }
 })
