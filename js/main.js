@@ -526,12 +526,12 @@ generarHTML.addEventListener("click", function () {
     codigo.document.body.innerText = `<div align=center>
         <div class="altpost__info">
             <div class="info__content">
-                <img src="${imagenPortada.value}" alt="${nombreEntrada.value}" title="${nombreEntrada.value}"/>
+                <img src="${imagenPortada.value}" alt="Descargar ${nombreEntrada.value}" title="Descargar ${nombreEntrada.value}"/>
             </div>
         </div>
         <div class="altpost__info">
             <div class="info__content">
-                <a>${textoEntrada.value}</a>
+                <p>${textoEntrada.value}</p>
                 ${mostrarPreSec}
             </div>
         </div>
