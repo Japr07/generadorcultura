@@ -550,17 +550,17 @@ generarHTML.addEventListener("click", function () {
         </div>
         <div align=center>
             <div class="info__content">
-                Titulo: ${nombreEntrada.value}<br/>
-                Genero: ${generos.value}<br/>
-                Año: ${año.value}<br/>
-                Capitulos: ${capitulos.value}<br/>
-                Censura: ${censura}<br/>
-                Audio: ${audio}<br/>
-                Subtítulos: ${subtitulo}<br/>
-                Formato: ${formato}<br/>
-                Tamaño: ${peso.value}<br/>
-                Duración: ${duracion.value}<br/>
-                Calidad: ${calidad.value}<br/>
+                <b>Titulo:</b> ${nombreEntrada.value}<br/>
+                <b>Genero:</b> ${generos.value}<br/>
+                <b>Año:</b> ${año.value}<br/>
+                <b>Capitulos:</b> ${capitulos.value}<br/>
+                <b>Censura:</b> ${censura}<br/>
+                <b>Audio:</b> ${audio}<br/>
+                <b>Subtítulos:</b> ${subtitulo}<br/>
+                <b>Formato:</b> ${formato}<br/>
+                <b>Tamaño:</b> ${peso.value}<br/>
+                <b>Duración:</b> ${duracion.value}<br/>
+                <b>Calidad:</b> ${calidad.value}<br/>
             </div>
         </div>
     </div>
