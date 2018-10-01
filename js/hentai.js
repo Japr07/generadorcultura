@@ -1,5 +1,3 @@
-const generarHTML = document.getElementById("generarHTML");
-
 
 /*//////////////
 ///Imagenes/////
@@ -477,6 +475,7 @@ $(borrarSec).on("click", ".borrarSec", function (e) {
 /*//////////////
 //Generar HTML//
 //////////////*/
+const generarHTML = document.getElementById("generarHTML");
 
 generarHTML.addEventListener("click", function () {
     const nombreEntrada = document.getElementById("nombreEntrada");
