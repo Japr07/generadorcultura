@@ -88,8 +88,8 @@ function mostrarImgHTML() {
 
     for (let i = 0; i < imagenes; i++) {
         $imagenes.push(document.getElementById(`imagenes${[i]}`));
-        imgHTML += `
-        <img src="${$imagenes[i].value}">`;
+        imgHTML += `<img src="${$imagenes[i].value}">
+        `;
     }
 };
 
@@ -268,17 +268,6 @@ generarHTML.addEventListener("click", function () {
         </div>
     </div>
 
-    <div class="info__title flex">
-        <h4><i class="fas fa-images"></i> Capturas</h4>
-    </div>
-
-    <div class="info__content flex wrap align-items-start info__content--images">
-    <center>
-        ${imgHTML}
-    </center>
-
-    </div>
-
     <div class="altpost__info">
         <div class="info__title flex">
             <h4><i class="fas fa-info-circle"></i>Informacion</h4>
@@ -309,7 +298,14 @@ generarHTML.addEventListener("click", function () {
             </div>
         </div>
     </div>
-    
+    <div class="info__title flex">
+        <h4><i class="fas fa-images"></i> Capturas</h4>
+    </div>
+    <div class="info__content flex wrap align-items-start info__content--images">
+        <center>
+            ${imgHTML}
+        </center>
+    </div>
     <div class="altpost__info">
         <div class="info__title flex">
             <h4><i class="fas fa-download"></i> Descargas</h4>
