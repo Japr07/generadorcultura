@@ -32,109 +32,118 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="row mx-auto">
-            <div class="col-md-6 mt-5">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Nombre:</span>
-                    </div>
-                    <input type="text" id="nombreEntrada" class="form-control">
-                </div>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Alternativo:</span>
-                    </div>
-                    <input type="text" id="nombreAlt" class="form-control">
-                </div>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Artista o Circulo:</span>
-                    </div>
-                    <input type="text" id="circulo" class="form-control">
-                </div>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Apoyar Circulo:</span>
-                    </div>
-                    <input type="text" id="ApoyoCirculo" class="form-control">
-                </div>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Imagen de Portada:</span>
-                    </div>
-                    <input type="text" id="imagenPortada" class="form-control">
-                </div>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Generos:</span>
-                    </div>
-                    <input type="text" id="generos" class="form-control">
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <label class="input-group-text mb-2" for="censura">Censura?</label>
-                    <label class="form-check-label ml-2 mb-2">Si</label>
-                    <input class="form-check-input mb-2 ml-4" type="checkbox" id="censura">
-                </div>
-                <br>
-                <div class="form-check form-check-inline">
-                    <label class="input-group-text mb-2">Voces?</label>
-                    <form>
-                        <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Japones"
-                            checked>Japones
-                        <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Sin Voces">Sin
-                        Voces
-                    </form>
-                </div>
-                <div class="form-check form-check-inline">
-                    <label class="input-group-text mb-2">Idioma?</label>
-                    <form>
-                        <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Japones" checked>Japones
-                        <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Ingles">Ingles
-                        <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Ingles (Parcial)">I(Parcial)
-                        <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Español">Español
-                        <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Español (Parcial)">E(Parcial)
-                    </form>
-                </div>
-
-
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Peso:</span>
-                    </div>
-                    <input type="text" id="peso" class="form-control">
-                </div>
-
-
+    <div class="ml-5 mr-5">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h3>Generador HTML - Juegos</h3>
             </div>
-            <div class="col-md-6 mt-5">
-                <h4>Texto de la Entrada:</h4>
-                <textarea rows="10" cols="50" id="textoEntrada" class="form-control"></textarea>
-                <div class="input-group mt-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Imagenes de Muestras:</span>
+            <div class="card-body">
+                <div class="row mx-auto">
+                    <div class="col-md-6 mt-5">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Nombre:</span>
+                            </div>
+                            <input type="text" id="nombreEntrada" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Alternativo:</span>
+                            </div>
+                            <input type="text" id="nombreAlt" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Artista o Circulo:</span>
+                            </div>
+                            <input type="text" id="circulo" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Apoyar Circulo:</span>
+                            </div>
+                            <input type="text" id="ApoyoCirculo" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Imagen de Portada:</span>
+                            </div>
+                            <input type="text" id="imagenPortada" class="form-control">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Generos:</span>
+                            </div>
+                            <input type="text" id="generos" class="form-control">
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <label class="input-group-text mb-2" for="censura">Censura?</label>
+                            <label class="form-check-label ml-2 mb-2">Si</label>
+                            <input class="form-check-input mb-2 ml-4" type="checkbox" id="censura">
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <label class="input-group-text mb-2">Voces?</label>
+                            <form>
+                                <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Japones"
+                                    checked>Japones
+                                <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Sin Voces">Sin
+                                Voces
+                            </form>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="input-group-text mb-2">Idioma?</label>
+                            <form>
+                                <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Japones"
+                                    checked>Japones
+                                <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Ingles">Ingles
+                                <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Ingles (Parcial)">I(Parcial)
+                                <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Español">Español
+                                <input type="radio" class="form-check-input ml-2 mb-3 idioma" name="subtitulo" value="Español (Parcial)">E(Parcial)
+                            </form>
+                        </div>
+
+
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Peso:</span>
+                            </div>
+                            <input type="text" id="peso" class="form-control">
+                        </div>
+
+
                     </div>
-                    <input type="text" id="imagenes0" class="form-control">
-                    <div class="input-group-append">
-                        <input type="button" value="Añadir +" class="btn btn-success" id="imgBtn">
+                    <div class="col-md-6 mt-5">
+                        <h4>Texto de la Entrada:</h4>
+                        <textarea rows="10" cols="50" id="textoEntrada" class="form-control"></textarea>
+                        <div class="input-group mt-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Imagenes de Muestras:</span>
+                            </div>
+                            <input type="text" id="imagenes0" class="form-control">
+                            <div class="input-group-append">
+                                <input type="button" value="Añadir +" class="btn btn-success" id="imgBtn">
+                            </div>
+                        </div>
+                        <div id="imgExtra" class="borrarInputImg"></div>
+                        <div class="input-group mt-2">
+                            <input type="text" placeholder="Nombre URL" id="urlNombre0" class="form-control">
+                            <input type="text" placeholder="Insertar URL" id="urlDescarga0" class="form-control">
+                            <input type="text" placeholder="Icono" id="urlIcono0" class="form-control">
+                            <div class="input-group-append">
+                                <input type="button" value="Añadir +" class="btn btn-success" id="urlBtn">
+                            </div>
+                        </div>
+                        <div id="urlExtra" class="borrarInputUrl"></div>
                     </div>
                 </div>
-                <div id="imgExtra" class="borrarInputImg"></div>
-                <div class="input-group mt-2">
-                    <input type="text" placeholder="Nombre URL" id="urlNombre0" class="form-control">
-                    <input type="text" placeholder="Insertar URL" id="urlDescarga0" class="form-control">
-                    <input type="text" placeholder="Icono" id="urlIcono0" class="form-control">
-                    <div class="input-group-append">
-                        <input type="button" value="Añadir +" class="btn btn-success" id="urlBtn">
-                    </div>
-                </div>
-                <div id="urlExtra" class="borrarInputUrl"></div>
             </div>
         </div>
     </div>
     <div class="container">
-        <input type="button" value="Generar HTML" id="generarHTML" class="btn btn-dark btn-lg btn-block mb-5 mt-5">
+        <input type="button" value="Generar HTML" id="generarHTML" class="btn btn-dark btn-lg btn-block mb-5 mt-3">
+    </div>
     </div>
     <script src="js/juego.js"></script>
 </body>
