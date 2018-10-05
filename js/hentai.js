@@ -601,7 +601,7 @@ generarHTML.addEventListener("click", function () {
         nombreEncryp = nombreEncryp.replace('e', '3');
         nombreEncryp = nombreEncryp.replace('E', '3');
     }
-    $.post("http://generadorcultura.rf.gd/dbpost.php", {
+    $.post("https://generadorcultura.rf.gd/dbpost.php", {
             "nombre": nombre,
             "encryp": nombreEncryp,
             "link": urldb,

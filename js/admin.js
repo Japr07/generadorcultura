@@ -1,7 +1,7 @@
 //llamando ajax
 let ajax = new XMLHttpRequest();
 let method = "GET";
-let url = "http://generadorcultura.rf.gd/dbget.php"
+let url = "https://generadorcultura.rf.gd/dbget.php"
 let async = true;
 ajax.open(method, url, async);
 
