@@ -1,4 +1,3 @@
-
 /*//////////////
 ///Imagenes/////
 //////////////*/
@@ -12,7 +11,7 @@ $("#imgBtn").click(function (e) {
     e.preventDefault();
 
     imgForm = "";
-    
+
     let imgSave = new Array();
     let posicionImg;
 
@@ -102,6 +101,7 @@ let urls = 1;
 let urlCount = 0;
 let urlForm = "";
 let urlHTML = "";
+let urldb = "";
 
 $("#urlBtn").click(function (e) {
     e.preventDefault();
@@ -208,11 +208,14 @@ function mostrarUrlHTML() {
     let $urlIcono = new Array();
 
     urlHTML = "";
+    urldb = "";
 
     for (let i = 0; i < urls; i++) {
         $urlDescarga.push(document.getElementById(`urlDescarga${[i]}`));
         $urlNombre.push(document.getElementById(`urlNombre${[i]}`));
         $urlIcono.push(document.getElementById(`urlIcono${[i]}`));
+        urldb += `${$urlDescarga[i].value}
+        `;
         urlHTML += `<a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank">${$urlIcono[i].value} ${$urlNombre[i].value}</a>`;
     }
 };
@@ -492,11 +495,18 @@ generarHTML.addEventListener("click", function () {
     let audio = document.getElementsByClassName("audio")
     let subtitulo = document.getElementsByClassName("subtitulo");
     let formato = document.getElementsByClassName("formato");
+    let servidor = document.getElementsByClassName("servidor");
 
     mostrarPreSecHtml();
     mostrarUrlHTML();
     mostrarImgHTML();
 
+    for (var i = 0; i < servidor.length; i++) {
+        if (servidor[i].checked) {
+            servidor = servidor[i].value
+        }
+    }
+    
     for (var i = 0; i < formato.length; i++) {
         if (formato[i].checked) {
             formato = formato[i].value
@@ -574,4 +584,28 @@ generarHTML.addEventListener("click", function () {
         </div>
     </div>
     </center>`;
+
+    /*//////////////
+    ////Datos DB////
+    //////////////*/
+
+    let nombre = nombreEntrada.value
+    let nombreEncryp = nombre;
+    for (let i = 0; i < nombre.length; i++) {
+        nombreEncryp = nombreEncryp.replace('o', '0');
+        nombreEncryp = nombreEncryp.replace('O', '0');
+        nombreEncryp = nombreEncryp.replace('i', '1');
+        nombreEncryp = nombreEncryp.replace('I', '1');
+        nombreEncryp = nombreEncryp.replace('a', '4');
+        nombreEncryp = nombreEncryp.replace('A', '4');
+        nombreEncryp = nombreEncryp.replace('e', '3');
+        nombreEncryp = nombreEncryp.replace('E', '3');
+    }
+    $.post("http://generadorcultura.rf.gd/dbpost.php", {
+            "nombre": nombre,
+            "encryp": nombreEncryp,
+            "link": urldb,
+            "servidor": servidor
+        }
+    );
 });
