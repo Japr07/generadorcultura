@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Generador HTML</title>
+    <link rel="stylesheet" href="lib/semantic.min.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
-    <script src="lib/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -57,10 +57,39 @@
                             <input type="text" id="imagenPortada" class="form-control">
                         </div>
                         <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Generos:</span>
-                            </div>
-                            <input type="text" id="generos" class="form-control">
+                            <select class="ui fluid search dropdown" id="generos" multiple="">
+                                <option value="">Generos</option>
+                                <option value=" Ahegao">Ahegao</option>
+                                <option value=" Anal">Anal</option>
+                                <option value=" Bakunyuu">Bakunyuu</option>
+                                <option value=" Blowjob">Blowjob</option>
+                                <option value=" Bondage">Bondage</option>
+                                <option value=" Bukkake">Bukkake</option>
+                                <option value=" Colegialas">Colegialas</option>
+                                <option value=" Comedia">Comedia</option>
+                                <option value=" Demonios">Demonios</option>
+                                <option value=" Escolar">Escolar</option>
+                                <option value=" Facial">Facial</option>
+                                <option value=" Fantasia">Fantasia</option>
+                                <option value=" Food">Food</option>
+                                <option value=" Gangbang">Gangbang</option>
+                                <option value=" Harem">Harem</option>
+                                <option value=" Incesto">Incesto</option>
+                                <option value=" Hipnosis">Hipnosis</option>
+                                <option value=" Juegos Sexuales">Juegos Sexuales</option>
+                                <option value=" Lolis">Lolis</option>
+                                <option value=" Maids">Maids</option>
+                                <option value=" Masturbacion">Masturbacion</option>
+                                <option value=" Milf">Milf</option>
+                                <option value=" Oral">Oral</option>
+                                <option value=" Orgia">Orgia</option>
+                                <option value=" Paizurri">Paizurri</option>
+                                <option value=" Sexo Publico">Sexo Publico</option>
+                                <option value=" Sumisas">Sumisas</option>
+                                <option value=" Tetonas">Tetonas</option>
+                                <option value=" Virgenes">Virgenes</option>
+                                <option value=" Yuri">Yuri</option>
+                            </select>
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
@@ -88,49 +117,57 @@
                             </div>
                             <input type="text" id="capitulos" class="form-control">
                         </div>
-                        <div class="form-check form-check-inline">
-                            <label class="input-group-text mb-2" for="censura">Censura?</label>
-                            <label class="form-check-label ml-2 mb-2">Si</label>
-                            <input class="form-check-input mb-2 ml-4" type="checkbox" id="censura">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Censura</label>
+                            </div>
+                            <div class="input-group-append">
+                                <select class="ui fluid search dropdown" id="censura">
+                                    <option value="">Censura</option>
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
                         </div>
-                        <br>
-                        <div class="form-check form-check-inline">
-                            <label class="input-group-text mb-2">Audio?</label>
-                            <form>
-                                <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Japones"
-                                    checked>Japones
-                                <input type="radio" class="form-check-input ml-2 mb-3 audio" name="audio" value="Español">Español
-                            </form>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Audio</label>
+                            </div>
+                            <div class="input-group-append">
+                                <select class="ui fluid search dropdown" id="audio">
+                                    <option value="">Audio</option>
+                                    <option value="Japones">Japones</option>
+                                    <option value="Ingles">Ingles</option>
+                                    <option value="Español">Español</option>
+                                </select>
+                            </div>
                         </div>
-                        <br>
-                        <div class="form-check form-check-inline">
-                            <label class="input-group-text mb-2">Servidor</label>
-                            <form>
-                                <input type="radio" class="form-check-input ml-2 mb-3 servidor" name="servidor" value="MEGA" checked>MEGA
-                                <input type="radio" class="form-check-input ml-2 mb-3 servidor" name="servidor" value="Drive">Drive
-                                <input type="radio" class="form-check-input ml-2 mb-3 servidor" name="servidor" value="1Fichier">1Fichier
-                                <input type="radio" class="form-check-input ml-2 mb-3 servidor" name="servidor" value="MediaFire">MediaFire
-                                <input type="radio" class="form-check-input ml-2 mb-3 servidor" name="servidor" value="Uptobox">Uptobox
-                                <input type="radio" class="form-check-input ml-2 mb-3 servidor" name="servidor" value="Openload">Openload                            </form>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Subtitulo</label>
+                            </div>
+                            <div class="input-group-append">
+                                <select class="ui fluid search dropdown" id="subtitulo">
+                                    <option value="">Subtitulo</option>
+                                    <option value="Ninguno">Ninguno</option>
+                                    <option value="Ingles">Ingles</option>
+                                    <option value="Japones">Japones</option>
+                                    <option value="Español">Español</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <label class="input-group-text mb-2">Subtitulo?</label>
-                            <form>
-                                <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Ingles">Ingles
-                                <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Ninguno"
-                                    checked>Ninguno
-                                <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Japones">Japones
-                                <input type="radio" class="form-check-input ml-2 mb-3 subtitulo" name="subtitulo" value="Español">Español
-                            </form>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <label class="input-group-text mb-2">Formato de Video?</label>
-                            <form>
-                                <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="MP4">MP4
-                                <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="MKV"
-                                    checked>MKV
-                                <input type="radio" class="form-check-input ml-2 mb-3 formato" name="formato" value="FLV">FLV
-                            </form>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Formato de Video</label>
+                            </div>
+                            <div class="input-group-append">
+                                <select class="ui fluid search dropdown" id="formato">
+                                    <option value="">Formato de Video</option>
+                                    <option value="MP4">MP4</option>
+                                    <option value="MKV">MKV</option>
+                                    <option value="FLV">FLV</option>
+                                </select>
+                            </div>
                         </div>
                         <input type="button" value="Añadir Precuela" id="preBtn" class="btn btn-success btn-block mb-2">
                         <div id="pre" class="borrarInputPre"></div>
@@ -156,8 +193,9 @@
                         </div>
                         <div class="input-group mb-2">
                             <input type="text" placeholder="Nombre URL" id="urlNombre0" class="form-control">
-                            <input type="text" placeholder="Insertar URL" id="urlDescarga0" class="form-control">
-                            <input type="text" placeholder="Icono" id="urlIcono0" class="form-control">
+                            <input type="text" placeholder="Descarga URL" id="urlDescarga0" class="form-control">
+                            <input type="text" placeholder="Correo URL" id="urlCorreo0" class="form-control">
+                            <input type="text" placeholder="Servidor URL" id="urlServidor0" class="form-control">
                             <div class="input-group-append">
                                 <input type="button" value="Añadir +" class="btn btn-success" id="urlBtn">
                             </div>
@@ -172,6 +210,8 @@
     <div class="container">
         <input type="button" value="Generar HTML" id="generarHTML" class="btn btn-dark btn-lg btn-block mb-5 mt-5">
     </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/semantic.min.js"></script>
     <script src="js/hentai.js"></script>
 </body>
 

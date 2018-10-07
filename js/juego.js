@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    $('#generos').dropdown();
+    $('#censura').dropdown();
+    $('#audio').dropdown();
+    $('#idioma').dropdown();
+});
 /*//////////////
 ///Imagenes/////
 //////////////*/
@@ -24,7 +30,7 @@ $("#imgBtn").click(function (e) {
     imagenes++;
 
     for (let i = 1; i < imagenes; i++) {
-        imgForm += `<div class="input-group mt-2">
+        imgForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Imagen ${[i+1]}:</span>
             </div>
@@ -64,7 +70,7 @@ $(borrarImg).on("click", ".borrarImg", function (e) {
     $(this).parent().parent().remove();
 
     for (let i = 1; i < imagenes; i++) {
-        imgForm += `<div class="input-group mt-2">
+        imgForm += `<div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text">Imagen ${[i+1]}:</span>
             </div>
@@ -101,6 +107,7 @@ let urls = 1;
 let urlCount = 0;
 let urlForm = "";
 let urlHTML = "";
+let urldb = "";
 
 $("#urlBtn").click(function (e) {
     e.preventDefault();
@@ -109,31 +116,37 @@ $("#urlBtn").click(function (e) {
 
     let nombreSave = new Array();
     let urlSave = new Array();
-    let iconoSave = new Array();
+    let correoSave = new Array();
+    let servidorSave = new Array();
 
     let posicionNombre;
     let posicionUrl;
-    let posicionIcono;
+    let posicionCorreo;
+    let posicionServidor;
 
     for (let i = 1; i <= urlCount; i++) {
         posicionNombre = document.getElementById(`urlNombre${[i]}`).value;
         posicionUrl = document.getElementById(`urlDescarga${[i]}`).value;
-        posicionIcono = document.getElementById(`urlIcono${[i]}`).value;
+        posicionCorreo = document.getElementById(`urlCorreo${[i]}`).value;
+        posicionServidor = document.getElementById(`urlServidor${[i]}`).value;
+
         nombreSave.push(posicionNombre);
         urlSave.push(posicionUrl);
-        iconoSave.push(posicionIcono);
+        correoSave.push(posicionCorreo);
+        servidorSave.push(posicionServidor);
     }
 
     urlCount++;
     urls++;
 
     for (let i = 1; i < urls; i++) {
-        urlForm += `<div class="input-group mt-2">
-            <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
-            <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
-            <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
+        urlForm += `<div class="input-group mb-2">
+            <input type="text" placeholder="Nombre URL" id="urlNombre${i}" class="form-control">
+            <input type="text" placeholder="Descarga URL" id="urlDescarga${i}" class="form-control">
+            <input type="text" placeholder="Correo URL" id="urlCorreo${i}" class="form-control">
+            <input type="text" placeholder="Servidor URL" id="urlServidor${i}" class="form-control">
             <div class="input-group-append">
-                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">                                
             </div>
         </div>`
     };
@@ -143,7 +156,8 @@ $("#urlBtn").click(function (e) {
     for (let i = 1; i < urlCount; i++) {
         document.getElementById(`urlNombre${[i]}`).value = nombreSave[i - 1];
         document.getElementById(`urlDescarga${[i]}`).value = urlSave[i - 1];
-        document.getElementById(`urlIcono${[i]}`).value = iconoSave[i - 1];
+        document.getElementById(`urlCorreo${[i]}`).value = correoSave[i - 1];
+        document.getElementById(`urlServidor${[i]}`).value = servidorSave[i - 1];
     }
 });
 
@@ -157,36 +171,43 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
 
     let nombreSave = new Array();
     let urlSave = new Array();
-    let iconoSave = new Array();
+    let correoSave = new Array();
+    let servidorSave = new Array();
 
     let posicionNombre;
     let posicionUrl;
-    let posicionIcono;
+    let posicionCorreo;
+    let posicionServidor;
 
     for (let i = 1; i <= urlCount; i++) {
         posicionNombre = document.getElementById(`urlNombre${[i]}`).value;
         posicionUrl = document.getElementById(`urlDescarga${[i]}`).value;
-        posicionIcono = document.getElementById(`urlIcono${[i]}`).value;
+        posicionCorreo = document.getElementById(`urlCorreo${[i]}`).value;
+        posicionServidor = document.getElementById(`urlServidor${[i]}`).value;
+
         nombreSave.push(posicionNombre);
         urlSave.push(posicionUrl);
-        iconoSave.push(posicionIcono);
+        correoSave.push(posicionCorreo);
+        servidorSave.push(posicionServidor);
     }
 
-    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().prev().val()), 1)
-    urlSave.splice(urlSave.indexOf($(this).parent().prev().prev().val()), 1)
-    iconoSave.splice(iconoSave.indexOf($(this).parent().prev().val()), 1)
+    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().prev().prev().val()), 1)
+    urlSave.splice(urlSave.indexOf($(this).parent().prev().prev().prev().val()), 1)
+    correoSave.splice(correoSave.indexOf($(this).parent().prev().prev().val()), 1)
+    servidorSave.splice(servidorSave.indexOf($(this).parent().prev().val()), 1)
 
     urlCount--;
 
     $(this).parent().parent().remove();
 
     for (let i = 1; i < urls; i++) {
-        urlForm += `<div class="input-group mt-2">
-            <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
-            <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
-            <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
+        urlForm += `<div class="input-group mb-2">
+            <input type="text" placeholder="Nombre URL" id="urlNombre${i}" class="form-control">
+            <input type="text" placeholder="Descarga URL" id="urlDescarga${i}" class="form-control">
+            <input type="text" placeholder="Correo URL" id="urlCorreo${i}" class="form-control">
+            <input type="text" placeholder="Servidor URL" id="urlServidor${i}" class="form-control">
             <div class="input-group-append">
-                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">                                
             </div>
         </div>`
     }
@@ -196,7 +217,8 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
     for (let i = 0; i < urlCount; i++) {
         document.getElementById(`urlNombre${[i+1]}`).value = nombreSave[i];
         document.getElementById(`urlDescarga${[i+1]}`).value = urlSave[i];
-        document.getElementById(`urlIcono${[i+1]}`).value = iconoSave[i];
+        document.getElementById(`urlCorreo${[i+1]}`).value = correoSave[i];
+        document.getElementById(`urlServidor${[i+1]}`).value = servidorSave[i];
     }
 
 });
@@ -204,15 +226,40 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
 function mostrarUrlHTML() {
     let $urlDescarga = new Array();
     let $urlNombre = new Array();
-    let $urlIcono = new Array();
+    let $urlCorreo = new Array();
+    let $urlServidor = new Array();    
+    let encryp;
 
     urlHTML = "";
 
     for (let i = 0; i < urls; i++) {
         $urlDescarga.push(document.getElementById(`urlDescarga${[i]}`));
         $urlNombre.push(document.getElementById(`urlNombre${[i]}`));
-        $urlIcono.push(document.getElementById(`urlIcono${[i]}`));
-        urlHTML += `<a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank">${$urlIcono[i].value} ${$urlNombre[i].value}</a>`;
+        $urlCorreo.push(document.getElementById(`urlCorreo${[i]}`));
+        $urlServidor.push(document.getElementById(`urlServidor${[i]}`));
+        urlHTML += `<a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank"><i class="fas fa-download"></i> ${$urlNombre[i].value}</a>`;
+        /*//////////////
+        ////Datos DB////
+        //////////////*/
+        encryp = nombreEntrada.value;
+        for (let j = 0; j < nombreEntrada.value.length; j++) {
+            encryp = encryp.replace('o', '0');
+            encryp = encryp.replace('O', '0');
+            encryp = encryp.replace('i', '1');
+            encryp = encryp.replace('I', '1');
+            encryp = encryp.replace('a', '4');
+            encryp = encryp.replace('A', '4');
+            encryp = encryp.replace('e', '3');
+            encryp = encryp.replace('E', '3');
+        }
+        
+        $.post("http://generadorcultura.rf.gd/server/dbpost.php", {
+            "nombre": nombreEntrada.value,
+            "encryp": encryp,
+            "correo": $urlCorreo[i].value,
+            "enlace": $urlDescarga[i].value,
+            "servidor": $urlServidor[i].value
+        });
     }
 };
 
@@ -222,37 +269,18 @@ generarHTML.addEventListener("click", function () {
     const nombreEntrada = document.getElementById("nombreEntrada");
     const imagenPortada = document.getElementById("imagenPortada");
     const textoEntrada = document.getElementById("textoEntrada");
-    const generos = document.getElementById("generos");
     const peso = document.getElementById("peso");
     const nombreAlt = document.getElementById("nombreAlt");
     const circulo = document.getElementById("circulo");
     const ApoyoCirculo = document.getElementById("ApoyoCirculo");
 
-    let censura = document.getElementById("censura");
-    let audio = document.getElementsByClassName("audio")
-    let idioma = document.getElementsByClassName("idioma");
+    const generos = $('#generos').dropdown('get value');
+    const censura = $('#censura').dropdown('get value');
+    const audio = $('#audio').dropdown('get value');
+    const idioma = $('#idioma').dropdown('get value');
 
     mostrarUrlHTML();
     mostrarImgHTML();
-
-
-    for (var i = 0; i < idioma.length; i++) {
-        if (idioma[i].checked) {
-            idioma = idioma[i].value
-        }
-    }
-
-    for (var i = 0; i < audio.length; i++) {
-        if (audio[i].checked) {
-            audio = audio[i].value
-        }
-    }
-
-    if (censura.checked) {
-        censura = "Si"
-    } else {
-        censura = "No"
-    }
 
     let codigo = window.open("", "codigo", "width=600,height=500,scrollbars=yes,resizable=yes");
     codigo.document.body.innerText = `<div align=center>
@@ -277,7 +305,7 @@ generarHTML.addEventListener("click", function () {
                 <b>Nombre:</b> ${nombreEntrada.value}<br/>
                 <b>Alternativo:</b> ${nombreAlt.value}<br/>
                 <b>Artista o Circulo:</b> ${circulo.value}<br/>
-                <b>Generos:</b> ${generos.value}<br/>
+                <b>Generos:</b> ${generos}<br/>
                 <b>Voces:</b> ${audio}<br/>
                 <b>Idioma:</b> ${idioma}<br/>
                 <b>Censura:</b> ${censura}<br/>

@@ -1,3 +1,13 @@
+$(document).ready(function () {
+    $('#generos').dropdown();
+    $('#censura').dropdown();
+    $('#audio').dropdown();
+    $('#subtitulo').dropdown();
+    $('#formato').dropdown();
+});
+
+
+
 /*//////////////
 ///Imagenes/////
 //////////////*/
@@ -110,31 +120,37 @@ $("#urlBtn").click(function (e) {
 
     let nombreSave = new Array();
     let urlSave = new Array();
-    let iconoSave = new Array();
+    let correoSave = new Array();
+    let servidorSave = new Array();
 
     let posicionNombre;
     let posicionUrl;
-    let posicionIcono;
+    let posicionCorreo;
+    let posicionServidor;
 
     for (let i = 1; i <= urlCount; i++) {
         posicionNombre = document.getElementById(`urlNombre${[i]}`).value;
         posicionUrl = document.getElementById(`urlDescarga${[i]}`).value;
-        posicionIcono = document.getElementById(`urlIcono${[i]}`).value;
+        posicionCorreo = document.getElementById(`urlCorreo${[i]}`).value;
+        posicionServidor = document.getElementById(`urlServidor${[i]}`).value;
+
         nombreSave.push(posicionNombre);
         urlSave.push(posicionUrl);
-        iconoSave.push(posicionIcono);
+        correoSave.push(posicionCorreo);
+        servidorSave.push(posicionServidor);
     }
 
     urlCount++;
     urls++;
 
     for (let i = 1; i < urls; i++) {
-        urlForm += `<div class="input-group mt-2">
-            <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
-            <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
-            <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
+        urlForm += `<div class="input-group mb-2">
+            <input type="text" placeholder="Nombre URL" id="urlNombre${i}" class="form-control">
+            <input type="text" placeholder="Descarga URL" id="urlDescarga${i}" class="form-control">
+            <input type="text" placeholder="Correo URL" id="urlCorreo${i}" class="form-control">
+            <input type="text" placeholder="Servidor URL" id="urlServidor${i}" class="form-control">
             <div class="input-group-append">
-                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">                                
             </div>
         </div>`
     };
@@ -144,7 +160,8 @@ $("#urlBtn").click(function (e) {
     for (let i = 1; i < urlCount; i++) {
         document.getElementById(`urlNombre${[i]}`).value = nombreSave[i - 1];
         document.getElementById(`urlDescarga${[i]}`).value = urlSave[i - 1];
-        document.getElementById(`urlIcono${[i]}`).value = iconoSave[i - 1];
+        document.getElementById(`urlCorreo${[i]}`).value = correoSave[i - 1];
+        document.getElementById(`urlServidor${[i]}`).value = servidorSave[i - 1];
     }
 });
 
@@ -158,36 +175,43 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
 
     let nombreSave = new Array();
     let urlSave = new Array();
-    let iconoSave = new Array();
+    let correoSave = new Array();
+    let servidorSave = new Array();
 
     let posicionNombre;
     let posicionUrl;
-    let posicionIcono;
+    let posicionCorreo;
+    let posicionServidor;
 
     for (let i = 1; i <= urlCount; i++) {
         posicionNombre = document.getElementById(`urlNombre${[i]}`).value;
         posicionUrl = document.getElementById(`urlDescarga${[i]}`).value;
-        posicionIcono = document.getElementById(`urlIcono${[i]}`).value;
+        posicionCorreo = document.getElementById(`urlCorreo${[i]}`).value;
+        posicionServidor = document.getElementById(`urlServidor${[i]}`).value;
+
         nombreSave.push(posicionNombre);
         urlSave.push(posicionUrl);
-        iconoSave.push(posicionIcono);
+        correoSave.push(posicionCorreo);
+        servidorSave.push(posicionServidor);
     }
 
-    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().prev().val()), 1)
-    urlSave.splice(urlSave.indexOf($(this).parent().prev().prev().val()), 1)
-    iconoSave.splice(iconoSave.indexOf($(this).parent().prev().val()), 1)
+    nombreSave.splice(nombreSave.indexOf($(this).parent().prev().prev().prev().prev().val()), 1)
+    urlSave.splice(urlSave.indexOf($(this).parent().prev().prev().prev().val()), 1)
+    correoSave.splice(correoSave.indexOf($(this).parent().prev().prev().val()), 1)
+    servidorSave.splice(servidorSave.indexOf($(this).parent().prev().val()), 1)
 
     urlCount--;
 
     $(this).parent().parent().remove();
 
     for (let i = 1; i < urls; i++) {
-        urlForm += `<div class="input-group mt-2">
-            <input type="text" placeholder="Nombre URL" id="urlNombre${[i]}" class="form-control">
-            <input type="text" placeholder="Insertar URL" id="urlDescarga${[i]}" class="form-control">
-            <input type="text" placeholder="Icono" id="urlIcono${[i]}" class="form-control">
+        urlForm += `<div class="input-group mb-2">
+            <input type="text" placeholder="Nombre URL" id="urlNombre${i}" class="form-control">
+            <input type="text" placeholder="Descarga URL" id="urlDescarga${i}" class="form-control">
+            <input type="text" placeholder="Correo URL" id="urlCorreo${i}" class="form-control">
+            <input type="text" placeholder="Servidor URL" id="urlServidor${i}" class="form-control">
             <div class="input-group-append">
-                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">
+                <input type="button" value="Eliminar" class="btn btn-danger borrarUrl">                                
             </div>
         </div>`
     }
@@ -197,7 +221,8 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
     for (let i = 0; i < urlCount; i++) {
         document.getElementById(`urlNombre${[i+1]}`).value = nombreSave[i];
         document.getElementById(`urlDescarga${[i+1]}`).value = urlSave[i];
-        document.getElementById(`urlIcono${[i+1]}`).value = iconoSave[i];
+        document.getElementById(`urlCorreo${[i+1]}`).value = correoSave[i];
+        document.getElementById(`urlServidor${[i+1]}`).value = servidorSave[i];
     }
 
 });
@@ -205,18 +230,40 @@ $(borrarUrl).on("click", ".borrarUrl", function (e) {
 function mostrarUrlHTML() {
     let $urlDescarga = new Array();
     let $urlNombre = new Array();
-    let $urlIcono = new Array();
+    let $urlCorreo = new Array();
+    let $urlServidor = new Array();    
+    let encryp;
 
     urlHTML = "";
-    urldb = "";
 
     for (let i = 0; i < urls; i++) {
         $urlDescarga.push(document.getElementById(`urlDescarga${[i]}`));
         $urlNombre.push(document.getElementById(`urlNombre${[i]}`));
-        $urlIcono.push(document.getElementById(`urlIcono${[i]}`));
-        urldb += `${$urlDescarga[i].value}
-        `;
-        urlHTML += `<a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank">${$urlIcono[i].value} ${$urlNombre[i].value}</a>`;
+        $urlCorreo.push(document.getElementById(`urlCorreo${[i]}`));
+        $urlServidor.push(document.getElementById(`urlServidor${[i]}`));
+        urlHTML += `<a class="btn bg-blue-violet" href="${$urlDescarga[i].value}" target="_blank"><i class="fas fa-download"></i> ${$urlNombre[i].value}</a>`;
+        /*//////////////
+        ////Datos DB////
+        //////////////*/
+        encryp = nombreEntrada.value;
+        for (let j = 0; j < nombreEntrada.value.length; j++) {
+            encryp = encryp.replace('o', '0');
+            encryp = encryp.replace('O', '0');
+            encryp = encryp.replace('i', '1');
+            encryp = encryp.replace('I', '1');
+            encryp = encryp.replace('a', '4');
+            encryp = encryp.replace('A', '4');
+            encryp = encryp.replace('e', '3');
+            encryp = encryp.replace('E', '3');
+        }
+        
+        $.post("http://generadorcultura.rf.gd/server/dbpost.php", {
+            "nombre": nombreEntrada.value,
+            "encryp": encryp,
+            "correo": $urlCorreo[i].value,
+            "enlace": $urlDescarga[i].value,
+            "servidor": $urlServidor[i].value
+        });
     }
 };
 
@@ -484,52 +531,20 @@ generarHTML.addEventListener("click", function () {
     const nombreEntrada = document.getElementById("nombreEntrada");
     const imagenPortada = document.getElementById("imagenPortada");
     const textoEntrada = document.getElementById("textoEntrada");
-    const generos = document.getElementById("generos");
     const año = document.getElementById("año");
     const capitulos = document.getElementById("capitulos");
     const peso = document.getElementById("peso");
     const duracion = document.getElementById("duracion");
     const calidad = document.getElementById("calidad");
-
-    let censura = document.getElementById("censura");
-    let audio = document.getElementsByClassName("audio")
-    let subtitulo = document.getElementsByClassName("subtitulo");
-    let formato = document.getElementsByClassName("formato");
-    let servidor = document.getElementsByClassName("servidor");
+    const generos = $('#generos').dropdown('get value');
+    const censura = $('#censura').dropdown('get value');
+    const audio = $('#audio').dropdown('get value');
+    const subtitulo = $('#subtitulo').dropdown('get value');
+    const formato = $('#formato').dropdown('get value');
 
     mostrarPreSecHtml();
     mostrarUrlHTML();
     mostrarImgHTML();
-
-    for (var i = 0; i < servidor.length; i++) {
-        if (servidor[i].checked) {
-            servidor = servidor[i].value
-        }
-    }
-    
-    for (var i = 0; i < formato.length; i++) {
-        if (formato[i].checked) {
-            formato = formato[i].value
-        }
-    }
-
-    for (var i = 0; i < subtitulo.length; i++) {
-        if (subtitulo[i].checked) {
-            subtitulo = subtitulo[i].value
-        }
-    }
-
-    for (var i = 0; i < audio.length; i++) {
-        if (audio[i].checked) {
-            audio = audio[i].value
-        }
-    }
-
-    if (censura.checked) {
-        censura = "Si"
-    } else {
-        censura = "No"
-    }
 
     let codigo = window.open("", "codigo", "width=600,height=500,scrollbars=yes,resizable=yes");
     codigo.document.body.innerText = `<div align=center>
@@ -553,7 +568,7 @@ generarHTML.addEventListener("click", function () {
         <div align=center>
             <div class="info__content">
                 <b>Titulo:</b> ${nombreEntrada.value}<br/>
-                <b>Genero:</b> ${generos.value}<br/>
+                <b>Generos:</b>${generos}<br/>
                 <b>Año:</b> ${año.value}<br/>
                 <b>Capitulos:</b> ${capitulos.value}<br/>
                 <b>Censura:</b> ${censura}<br/>
@@ -585,27 +600,5 @@ generarHTML.addEventListener("click", function () {
     </div>
     </center>`;
 
-    /*//////////////
-    ////Datos DB////
-    //////////////*/
 
-    let nombre = nombreEntrada.value
-    let nombreEncryp = nombre;
-    for (let i = 0; i < nombre.length; i++) {
-        nombreEncryp = nombreEncryp.replace('o', '0');
-        nombreEncryp = nombreEncryp.replace('O', '0');
-        nombreEncryp = nombreEncryp.replace('i', '1');
-        nombreEncryp = nombreEncryp.replace('I', '1');
-        nombreEncryp = nombreEncryp.replace('a', '4');
-        nombreEncryp = nombreEncryp.replace('A', '4');
-        nombreEncryp = nombreEncryp.replace('e', '3');
-        nombreEncryp = nombreEncryp.replace('E', '3');
-    }
-    $.post("https://generadorcultura.rf.gd/dbpost.php", {
-            "nombre": nombre,
-            "encryp": nombreEncryp,
-            "link": urldb,
-            "servidor": servidor
-        }
-    );
 });
