@@ -594,11 +594,9 @@ generarHTML.addEventListener("click", function () {
             <h4><i class="fas fa-download"></i> Descargas</h4>
         </div>
     <center>
-        <div class="info__content flex wrap align-items-start info__content--images">
+        <div class="info__content flex wrap align-items-start">
             ${urlHTML}
         </div>
     </div>
     </center>`;
-
-
 });

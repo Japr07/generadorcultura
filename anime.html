@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Generador HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/generadorcultura">Generador HTML</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="anime.html">Anime <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="hentai.html">Hentai</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="juego.html">Juegos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jav.html">Javs</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <a class="nav-link btn btn-primary" href="admin.html">ADMIN</a>
+            </span>
+        </div>
+    </nav>
+    <div class="ml-5 mr-5">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h3>Generador HTML - Anime</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mx-auto mt-2">
+                    <div class="col-md-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ID Trailer Youtube:</span>
+                            </div>
+                            <input type="text" id="idyoutube" class="form-control" placeholder="ej: XSm2J-4s3SA">
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted">Url Normal:
+                            https://www.youtube.com/watch?v=<b>XSm2J-4s3SA</b></small>
+                        <div class="input-group mt-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Imagenes:</span>
+                            </div>
+                            <input type="text" id="imagenes0" class="form-control">
+                            <div class="input-group-append">
+                                <input type="button" value="Añadir +" class="btn btn-success" id="imgBtn">
+                            </div>
+                        </div>
+                        <div id="imgExtra" class="borrarInputImg"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ImgPortada:</span>
+                            </div>
+                            <input type="text" id="imgPortada" class="form-control" placeholder="URL Imagen Portada">
+                        </div>
+                        <div class="input-group mt-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Descarga:</span>
+                            </div>
+                            <input type="text" placeholder="Traduccion/Fansub" id="urlFansub0" class="form-control">
+                            <input type="text" placeholder="Descarga URL" id="urlDescarga0" class="form-control">
+                            <input type="text" placeholder="Servidor URL" id="urlServidorDescarga0" class="form-control">
+                            <div class="input-group-append">
+                                <input type="button" value="Añadir +" class="btn btn-success" id="urlBtn">
+                            </div>
+                        </div>
+                        <div id="urlExtra" class="borrarInputUrl"></div>
+                        <input type="button" value="Añadir Online" id="onlinebtn" class="btn btn-success btn-block mt-2 mb-2">
+                        <div id="online" class="borrarInputOnline"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="button" value="Generar HTML" id="generarHTML" class="btn btn-block btn-primary mt-4">
+    </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="js/anime.js"></script>
+</body>
+
+</html>
