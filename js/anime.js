@@ -351,6 +351,7 @@ $(borrarOnline).on("click", ".borrarOnline", function (e) {
 
     }
 })
+let onlineMostrar;
 
 function mostrarOnlineHTML() {
     if (online) {
@@ -358,7 +359,6 @@ function mostrarOnlineHTML() {
         let $onlineServidor = new Array();
         let $onlineEnlace = new Array();
         let $onlineFansub = new Array();
-
         onlineHTML = "";
 
         if (onlineCount > 0) {
@@ -374,8 +374,24 @@ function mostrarOnlineHTML() {
                 </tr>`;
             }
         }
+        onlineMostrar = `
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lista de Opciones</th>
+                        <th>Servidor</th>
+                        <th>Traducción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${onlineHTML}
+                </tbody>
+            </table>
+        </div>
+        `
     } else {
-        onlineHTML = "";
+        onlineMostrar = "Online no disponible";
     }
 }
 
@@ -428,15 +444,9 @@ generarHTML.addEventListener("click", function () {
                         </tbody>
                     </table></div>
                 </div>
-
                 <!-- SEGUNDO PANEL -->
                 <div id="panel2" class="wjs-panel">
-            <div class="table"><table>
-                        <thead><tr><th>Lista de Opciones</th><th>Servidor</th><th>Traducción</th></tr></thead>
-                        <tbody>
-                        ${onlineHTML}
-                        </tbody>
-                    </table></div>
+                ${onlineMostrar}
             </div>
             </div>
             </div><!-- .altpost__info -->
