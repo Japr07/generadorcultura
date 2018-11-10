@@ -221,7 +221,7 @@ function mostrarUrlHTML() {
         $urlFansub.push(document.getElementById(`urlFansub${[i]}`));
         $urlServidor.push(document.getElementById(`urlServidorDescarga${[i]}`));
         urlHTML += `<tr>
-            <td><a class="button blue" href="${$urlDescarga[i].value}"><i class="fa fa-download" aria-hidden="true"></i> Opción ${i+1}</a></td>
+            <td><a class="button blue" href="${$urlDescarga[i].value}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Opción ${i+1}</a></td>
             <td>${$urlServidor[i].value}</td>
             <td>${$urlFansub[i].value}</td>
         </tr>`
@@ -368,7 +368,7 @@ function mostrarOnlineHTML() {
                 $onlineFansub.push(document.getElementById(`onlineFansub${[i]}`));
 
                 onlineHTML += `<tr>
-                    <td><a class="button blue" href="${$onlineEnlace[i].value}"><i class="fa fa-download" aria-hidden="true"></i> Opción ${i+1}</a></td>
+                    <td><a class="button blue" href="${$onlineEnlace[i].value}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Opción ${i+1}</a></td>
                     <td>${$onlineServidor[i].value}</td>
                     <td>${$onlineFansub[i].value}</td>
                 </tr>`;
@@ -405,7 +405,8 @@ generarHTML.addEventListener("click", function () {
     const imgPortada = document.getElementById("imgPortada");
 
     mostrarUrlHTML();
-    mostrarOnlineHTML()
+    mostrarImgHTML();
+    mostrarOnlineHTML();
 
     let codigo = window.open("", "codigo", "width=600,height=500,scrollbars=yes,resizable=yes");
     codigo.document.body.innerText = `<img class='none' src="${imgPortada.value}"/>
